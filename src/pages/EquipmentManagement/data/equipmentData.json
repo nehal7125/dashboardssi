@@ -1,0 +1,24 @@
+[
+  {
+    "equipment_id": "101",
+    "name": "Fire Extinguisher",
+    "category": "Fire Safety",
+    "location": "Lobby",
+    "last_inspection_status": "Passed",
+    "status": "OK",
+    "last_inspection": "01-Jan-2025",
+    "next_due": "01-Feb-2025",
+    "notes": "No issues detected"
+  },
+  {
+    "equipment_id": "102",
+    "name": "Smoke Detector",
+    "category": "Fire Safety",
+    "location": "Main Hall",
+    "last_inspection_status": "Passed",
+    "status": "OK",
+    "last_inspection": "15-Jan-2025",
+    "next_due": "15-Feb-2025",
+    "notes": "Replaced batteries"
+  }
+]

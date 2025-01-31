@@ -17,6 +17,7 @@ interface Company {
   updated_at: string;
   created_at: string;
 }
+
 type AddCompanyUserRequest = {
   company_id: number;
   user_fname: string;
@@ -72,40 +73,29 @@ export const getAllCompanies = async (
   navigate?: any,
 ) => {
   try {
-    const response = await axios.get<CompanyListResponse>(
-      `${baseURL}/api/v1/companies`,
-      {
-        params: {
-          page,
-          limit,
-          searchText, // Spread the optional filter parameters
-        },
-        headers: {
-          authorization: `Bearer ${getToken()}`,
-        },
+    const response = await axios.get<CompanyListResponse>(`${baseURL}/api/v1/companies`, {
+      params: {
+        page,
+        limit,
+        searchText, // Spread the optional filter parameters
       },
-    );
+      headers: {
+        authorization: `Bearer ${getToken()}`,
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error, dispatch, navigate);
   }
 };
 
-export const addCompany = async (
-  companyData: AddCompanyRequest,
-  dispatch: any,
-  navigate: any,
-) => {
+export const addCompany = async (companyData: AddCompanyRequest, dispatch: any, navigate: any) => {
   try {
-    const response = await axios.post<AddCompanyResponse>(
-      `${baseURL}/api/v1/companies`,
-      companyData,
-      {
-        headers: {
-          authorization: `Bearer ${getToken()}`,
-        },
+    const response = await axios.post<AddCompanyResponse>(`${baseURL}/api/v1/companies`, companyData, {
+      headers: {
+        authorization: `Bearer ${getToken()}`,
       },
-    );
+    });
     return response.data;
   } catch (error) {
     handleError(error, dispatch, navigate);
@@ -133,11 +123,7 @@ export const editCompany = async (
   }
 };
 
-export const deleteCompany = async (
-  companyId: number,
-  dispatch: any,
-  navigate: any,
-): Promise<void> => {
+export const deleteCompany = async (companyId: number, dispatch: any, navigate: any): Promise<void> => {
   try {
     await axios.delete(`${baseURL}/api/v1/companies/${companyId}`, {
       headers: {
@@ -158,40 +144,29 @@ export const getAllCompanyUsers = async (
   navigate?: any,
 ) => {
   try {
-    const response = await axios.get<userApiResponse>(
-      `${baseURL}/api/v1/company/users`,
-      {
-        params: {
-          page,
-          limit,
-          searchText,
-        },
-        headers: {
-          authorization: `Bearer ${getToken()}`,
-        },
+    const response = await axios.get<userApiResponse>(`${baseURL}/api/v1/company/users`, {
+      params: {
+        page,
+        limit,
+        searchText,
       },
-    );
+      headers: {
+        authorization: `Bearer ${getToken()}`,
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error, dispatch, navigate);
   }
 };
 
-export const addCompanyUser = async (
-  companyUserData: AddCompanyUserRequest,
-  dispatch: any,
-  navigate: any,
-) => {
+export const addCompanyUser = async (companyUserData: AddCompanyUserRequest, dispatch: any, navigate: any) => {
   try {
-    const response = await axios.post<AddCompanyResponse>(
-      `${baseURL}/api/v1/company/users`,
-      companyUserData,
-      {
-        headers: {
-          authorization: `Bearer ${getToken()}`,
-        },
+    const response = await axios.post<AddCompanyResponse>(`${baseURL}/api/v1/company/users`, companyUserData, {
+      headers: {
+        authorization: `Bearer ${getToken()}`,
       },
-    );
+    });
     return response.data;
   } catch (error) {
     handleError(error, dispatch, navigate);
@@ -219,11 +194,7 @@ export const editCompanyUser = async (
   }
 };
 
-export const deleteCompanyUser = async (
-  companyUserId: number,
-  dispatch: any,
-  navigate: any,
-): Promise<void> => {
+export const deleteCompanyUser = async (companyUserId: number, dispatch: any, navigate: any): Promise<void> => {
   try {
     await axios.delete(`${baseURL}/api/v1/company/users/${companyUserId}`, {
       headers: {
@@ -256,21 +227,13 @@ export const getAllInspectors = async (
   }
 };
 
-export const addInspector = async (
-  newInspector: AddInspectorRequest,
-  dispatch: any,
-  navigate: any,
-) => {
+export const addInspector = async (newInspector: AddInspectorRequest, dispatch: any, navigate: any) => {
   try {
-    const response = await axios.post(
-      `${baseURL}/api/v1/inspector`,
-      newInspector,
-      {
-        headers: {
-          authorization: `Bearer ${getToken()}`,
-        },
+    const response = await axios.post(`${baseURL}/api/v1/inspector`, newInspector, {
+      headers: {
+        authorization: `Bearer ${getToken()}`,
       },
-    );
+    });
     return response.data;
   } catch (error) {
     handleError(error, dispatch, navigate);
@@ -283,26 +246,18 @@ export const editInspector = async (
   navigate: any,
 ) => {
   try {
-    const response = await axios.put(
-      `${baseURL}/api/v1/inspector/${updatedInspector.id}`,
-      updatedInspector,
-      {
-        headers: {
-          authorization: `Bearer ${getToken()}`,
-        },
+    const response = await axios.put(`${baseURL}/api/v1/inspector/${updatedInspector.id}`, updatedInspector, {
+      headers: {
+        authorization: `Bearer ${getToken()}`,
       },
-    );
+    });
     return response.data;
   } catch (error) {
     handleError(error, dispatch, navigate);
   }
 };
 
-export const deleteInspector = async (
-  inspectorId: number,
-  dispatch: any,
-  navigate: any,
-): Promise<void> => {
+export const deleteInspector = async (inspectorId: number, dispatch: any, navigate: any): Promise<void> => {
   try {
     await axios.delete(`${baseURL}/api/v1/inspector/${inspectorId}`, {
       headers: {
@@ -335,21 +290,13 @@ export const getAllEquipmentTypes = async (
   }
 };
 
-export const addEquipmentType = async (
-  equipmentTypeData: AddEquipmentTypeRequest,
-  dispatch: any,
-  navigate: any,
-) => {
+export const addEquipmentType = async (equipmentTypeData: AddEquipmentTypeRequest, dispatch: any, navigate: any) => {
   try {
-    const response = await axios.post(
-      `${baseURL}/api/v1/equipmentTypes`,
-      equipmentTypeData,
-      {
-        headers: {
-          authorization: `Bearer ${getToken()}`,
-        },
+    const response = await axios.post(`${baseURL}/api/v1/equipmentTypes`, equipmentTypeData, {
+      headers: {
+        authorization: `Bearer ${getToken()}`,
       },
-    );
+    });
     return response.data;
   } catch (error) {
     handleError(error, dispatch, navigate);
@@ -377,11 +324,7 @@ export const editEquipmentType = async (
   }
 };
 
-export const deleteEquipmentType = async (
-  equipmentTypeId: number,
-  dispatch: any,
-  navigate: any,
-) => {
+export const deleteEquipmentType = async (equipmentTypeId: number, dispatch: any, navigate: any) => {
   try {
     await axios.delete(`${baseURL}/api/v1/equipmentTypes/${equipmentTypeId}`, {
       headers: {
@@ -418,21 +361,13 @@ export const getAllPartTypes = async (
   }
 };
 
-export const addPartType = async (
-  partTypeData: AddPartTypeRequest,
-  dispatch: any,
-  navigate: any,
-) => {
+export const addPartType = async (partTypeData: AddPartTypeRequest, dispatch: any, navigate: any) => {
   try {
-    const response = await axios.post(
-      `${baseURL}/api/v1/partTypes`,
-      partTypeData,
-      {
-        headers: {
-          authorization: `Bearer ${getToken()}`,
-        },
+    const response = await axios.post(`${baseURL}/api/v1/partTypes`, partTypeData, {
+      headers: {
+        authorization: `Bearer ${getToken()}`,
       },
-    );
+    });
     return response.data;
   } catch (error) {
     handleError(error, dispatch, navigate);
@@ -445,26 +380,18 @@ export const editPartType = async (
   navigate: any,
 ) => {
   try {
-    const response = await axios.put(
-      `${baseURL}/api/v1/partTypes/${partTypeData.part_type_id}`,
-      partTypeData,
-      {
-        headers: {
-          authorization: `Bearer ${getToken()}`,
-        },
+    const response = await axios.put(`${baseURL}/api/v1/partTypes/${partTypeData.part_type_id}`, partTypeData, {
+      headers: {
+        authorization: `Bearer ${getToken()}`,
       },
-    );
+    });
     return response.data;
   } catch (error) {
     handleError(error, dispatch, navigate);
   }
 };
 
-export const deletePartType = async (
-  partTypeId: number,
-  dispatch: any,
-  navigate: any,
-) => {
+export const deletePartType = async (partTypeId: number, dispatch: any, navigate: any) => {
   try {
     await axios.delete(`${baseURL}/api/v1/partTypes/${partTypeId}`, {
       headers: {
@@ -497,53 +424,33 @@ export const getAllInventory = async (
   }
 };
 
-export const addInventory = async (
-  inventoryData: any,
-  dispatch: any,
-  navigate: any,
-) => {
+export const addInventory = async (inventoryData: any, dispatch: any, navigate: any) => {
   try {
-    const response = await axios.post(
-      `${baseURL}/api/v1/inventory`,
-      inventoryData,
-      {
-        headers: {
-          authorization: `Bearer ${getToken()}`,
-        },
+    const response = await axios.post(`${baseURL}/api/v1/inventory`, inventoryData, {
+      headers: {
+        authorization: `Bearer ${getToken()}`,
       },
-    );
+    });
     return response.data;
   } catch (error) {
     handleError(error, dispatch, navigate);
   }
 };
 
-export const editInventory = async (
-  inventoryData: any & { inventory_id: number },
-  dispatch: any,
-  navigate: any,
-) => {
+export const editInventory = async (inventoryData: any & { inventory_id: number }, dispatch: any, navigate: any) => {
   try {
-    const response = await axios.put(
-      `${baseURL}/api/v1/inventory/${inventoryData.inventory_id}`,
-      inventoryData,
-      {
-        headers: {
-          authorization: `Bearer ${getToken()}`,
-        },
+    const response = await axios.put(`${baseURL}/api/v1/inventory/${inventoryData.inventory_id}`, inventoryData, {
+      headers: {
+        authorization: `Bearer ${getToken()}`,
       },
-    );
+    });
     return response.data;
   } catch (error) {
     handleError(error, dispatch, navigate);
   }
 };
 
-export const deleteInventory = async (
-  inventoryId: number,
-  dispatch: any,
-  navigate: any,
-) => {
+export const deleteInventory = async (inventoryId: number, dispatch: any, navigate: any) => {
   try {
     await axios.delete(`${baseURL}/api/v1/inventory/${inventoryId}`, {
       headers: {
