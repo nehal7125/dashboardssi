@@ -1,0 +1,44 @@
+/* customPagination.css */
+.custom-pagination .ant-pagination-item,
+.custom-pagination .ant-pagination-prev,
+.custom-pagination .ant-pagination-next {
+  @apply bg-white text-black;
+}
+
+.custom-pagination .ant-pagination-prev:hover,
+.custom-pagination .ant-pagination-next:hover {
+  @apply bg-white text-black; /* Ensure text is black on hover */
+}
+
+.custom-pagination .ant-pagination-item-active {
+  @apply bg-white text-black;
+}
+
+.custom-pagination .ant-pagination-item:hover {
+  @apply bg-white text-black; /* Ensure text is black on hover */
+}
+
+.custom-pagination .ant-pagination-item a {
+  @apply text-black;
+}
+
+.custom-pagination .ant-pagination-prev,
+.custom-pagination .ant-pagination-next {
+  color: black; /* Ensure arrows are black by default */
+}
+
+.custom-pagination .ant-pagination-prev:hover,
+.custom-pagination .ant-pagination-next:hover {
+  color: black; /* Ensure arrows are black on hover */
+}
+
+.ant-pagination-item:hover {
+  background-color: gray !important;
+  color: white !important;
+  font-weight: 500;
+}
+
+.ant-pagination-item-active {
+  background-color: white !important;
+  color: black !important;
+}
