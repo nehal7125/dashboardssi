@@ -7,4 +7,4 @@ export type Company = {
     office_address: string;
     status: boolean;
     updated_at: string; // Assuming this is an ISO date string
-  };
+  };  
