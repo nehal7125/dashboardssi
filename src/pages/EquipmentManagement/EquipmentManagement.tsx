@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 type Equipment = {
   _id: string;
-  equipment_id: String;
+  equipment_id: string;
   name: string;
   category: string;
   location: string;
@@ -84,19 +84,19 @@ const EquipmentPage: React.FC = () => {
   });
 
   // Delete equipment mutation
-  // const mutationDelete = useMutation({
-  //   mutationFn: async (id: string) => {
-  //     const response = await axios.delete(`http://localhost:5000/api/equipment/${id}`);
-  //     return response.data;
-  //   },
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries({ queryKey: ['equipment'] });
-  //     message.success('Equipment deleted successfully');
-  //   },
-  //   onError: (error: any) => {
-  //     message.error(error.response?.data?.message || 'An error occurred while deleting the equipment.');
-  //   },
-  // });
+  const mutationDelete = useMutation({
+    mutationFn: async (id: string) => {
+      const response = await axios.delete(`http://localhost:5000/api/equipment/${id}`);
+      return response.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['equipment'] });
+      message.success('Equipment deleted successfully');
+    },
+    onError: (error: any) => {
+      message.error(error.response?.data?.message || 'An error occurred while deleting the equipment.');
+    },
+  });
 
   const columns = [
     {
@@ -150,9 +150,9 @@ const EquipmentPage: React.FC = () => {
           <button onClick={() => handleEdit(record)} className="text-blue-500">
             <FaEdit className="text-xl" />
           </button>
-          {/* <button onClick={() => mutationDelete.mutate(record._id)} className="text-red-500">
+          <button onClick={() => mutationDelete.mutate(record._id)} className="text-red-500">
             Delete
-          </button> */}
+          </button>
         </div>
       ),
     },
@@ -203,9 +203,9 @@ const EquipmentPage: React.FC = () => {
           style={{ marginBottom: '16px', maxWidth: '300px' }}
           onSearch={(value) => {}}
         />
-        {/* <Button className="bg-primary text-white" onClick={handleAddModal}>
+        <Button className="bg-primary text-white" onClick={handleAddModal}>
           View Access of Equipment Management
-        </Button> */}
+        </Button>
       </div>
       <Table
         dataSource={equipmentData?.data}

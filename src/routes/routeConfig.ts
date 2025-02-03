@@ -1,6 +1,6 @@
 import React from 'react';
 import DefaultLayout from '../layout/DefaultLayout';
-const Testing  = React.lazy(() => import('../pages/Test'));
+const EquipmentManagement = React.lazy(() => import('../pages/EquipmentManagement/EquipmentManagement'));
 const SEIDashboard = React.lazy(() => import('../pages/Dashboard/SEIDashboard'));
 const Counter = React.lazy(() => import('../components/Counter/Counter'));
 const CompanyDetailsPage = React.lazy(() => import('../pages/CompanyDetails/CompanyDetails'));
@@ -30,10 +30,10 @@ const routes: Route[] = [
     layout: DefaultLayout,
   },
   {
-    path: '/testing',
-    component: Testing,
+    path: '/EquipmentManagement',
+    component: EquipmentManagement,
     roles: ['admin'],
-    title: 'Testing | SSI Admin',
+    title: 'EquipmentManagement | SSI Admin',
     layout: DefaultLayout,
   },
   {
